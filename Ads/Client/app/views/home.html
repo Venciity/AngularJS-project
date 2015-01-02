@@ -1,83 +1,87 @@
-<div class="col-lg-2">
-    <div class="navigation">
-        <h4>Navigation</h4>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">Home</a></li>
-        </ul>
-    </div>
-    <div class="loginRegister">
-        <p>To publish a new ad, please login.</p>
-        <a href="#/login" class="btn btn-primary">Login</a>
-        <a href="#/register" class="btn btn-primary">Register</a>
-    </div>
-</div>
-<div class="col-lg-8">
-    <div class="row">
-        <div class="col-md-6">
-            <h4>IPhone 4S for Sale</h4>
+<div class="container">
+    <div class="col-lg-2">
+        <div class="navigation">
+            <h4>Navigation</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
         </div>
-        <div class="col-md-6 pull-right">
-            <h5 class="pull-right">3-Jan-2015</h5>
+        <div class="loginRegister">
+            <p>To publish a new ad, please login.</p>
+            <a href="#/login" class="btn btn-primary">Login</a>
+            <a href="#/register" class="btn btn-primary register">Register</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="image-container">
-                <img src="http://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2014/03/topic_iphone_4s.png?itok=AePVr0NO" alt="image"/>
+    <div class="col-lg-8 ad">
+        <div class="row">
+            <!-- DELETE THIS -->
+            <h1 ng-repeat="ad in ads">{{ad.title}}</h1>
+            <div class="col-md-6">
+                <h4>IPhone 4S for Sale</h4>
+            </div>
+            <div class="col-md-6 pull-right">
+                <h5 class="pull-right">3-Jan-2015</h5>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    IPhone 4s for sale . Fuck yeah buushit maaan wtf ? omg you are crazy
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-container">
+                    <img src="http://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2014/03/topic_iphone_4s.png?itok=AePVr0NO" alt="image"/>
                 </div>
             </div>
-            <div class="well bs-component">
-                <form class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="name" class="col-lg-2">Name: </label>
-                            <div class="col-lg-10">
-                                <input type="text" id="name"/>
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        I have IPhone 4S 16GB for sale. Good price. Like a new. Please call me in the evenings or at weekends.
+                    </div>
+                </div>
+                <div class="well bs-component">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="name" class="col-lg-2">Name: </label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="name"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-lg-2">Email: </label>
-                            <div class="col-lg-10">
-                                <input type="text" id="email"/>
+                            <div class="form-group">
+                                <label for="email" class="col-lg-2">Email: </label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="email"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tel" class="col-lg-2">Tel: </label>
-                            <div class="col-lg-10">
-                                <input type="text" id="tel"/>
+                            <div class="form-group">
+                                <label for="tel" class="col-lg-2">Tel: </label>
+                                <div class="col-lg-10">
+                                    <input type="text" id="tel"/>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                </form>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="col-lg-2">
-    <div class="categories">
-        <h4>Categories</h4>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">All</a></li>
-            <li class="active"><a href="#">Cars</a></li>
-            <li class="active"><a href="#">Properties</a></li>
-            <li class="active"><a href="#">Electronics</a></li>
-            <li class="active"><a href="#">Jobs</a></li>
-        </ul>
-    </div>
-    <div class="towns">
-        <h4>Towns</h4>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">All</a></li>
-            <li class="active"><a href="#">Cars</a></li>
-            <li class="active"><a href="#">Properties</a></li>
-            <li class="active"><a href="#">Electronics</a></li>
-            <li class="active"><a href="#">Jobs</a></li>
-        </ul>
+    <div class="col-lg-2">
+        <div class="categories">
+            <h4>Categories</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">All</a></li>
+                <li class="active"><a href="#">Cars</a></li>
+                <li class="active"><a href="#">Properties</a></li>
+                <li class="active"><a href="#">Electronics</a></li>
+                <li class="active"><a href="#">Jobs</a></li>
+            </ul>
+        </div>
+        <div class="towns">
+            <h4>Towns</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">All</a></li>
+                <li class="active"><a href="#">Cars</a></li>
+                <li class="active"><a href="#">Properties</a></li>
+                <li class="active"><a href="#">Electronics</a></li>
+                <li class="active"><a href="#">Jobs</a></li>
+            </ul>
+        </div>
     </div>
 </div>

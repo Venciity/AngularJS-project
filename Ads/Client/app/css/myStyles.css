@@ -22,8 +22,19 @@ footer {
     border-radius: 5px;
 }
 
+.ad {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
 .registerHere, .loginHere {
     margin-top: 20px;
+}
+
+.register {
+    margin-top: 5px;
 }
 
 img {

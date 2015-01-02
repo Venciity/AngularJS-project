@@ -1,11 +1,12 @@
 'use strict';
 
-var ads =  angular
+var adsApp =  angular
     .module('adsApp', ['ngResource', 'ngRoute'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/home.html'
+                templateUrl: 'views/home.html',
+                controller: 'HomeController'
             })
             .when('/login', {
                 templateUrl: 'views/login.html'
@@ -13,4 +14,5 @@ var ads =  angular
             .when('/register', {
                 templateUrl: 'views/register.html'
             })
+            .otherwise({redirectTo: '/'});
     });
