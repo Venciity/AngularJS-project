@@ -22,7 +22,7 @@ footer {
     border-radius: 5px;
 }
 
-.registerHere {
+.registerHere, .loginHere {
     margin-top: 20px;
 }
 

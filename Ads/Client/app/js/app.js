@@ -10,4 +10,7 @@ var ads =  angular
             .when('/login', {
                 templateUrl: 'views/login.html'
             })
+            .when('/register', {
+                templateUrl: 'views/register.html'
+            })
     });
