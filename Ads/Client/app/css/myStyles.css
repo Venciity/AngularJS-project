@@ -37,6 +37,14 @@ footer {
     margin-top: 5px;
 }
 
+.labelSpecial {
+    margin-top: 13px;
+}
+
+.panel, .panel-default {
+    margin-bottom: 5px;
+}
+
 img {
     max-width: 100%;
     max-height: 100%;
