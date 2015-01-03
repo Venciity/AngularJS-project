@@ -19,18 +19,18 @@
                 <div class="form-group">
                     <label for="inputUsername" class="col-lg-2 control-label">Username</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="loginUsername">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="loginPassword">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary" ng-click="loginUser()">Login</button>
                         <a href="#" class="pull-right registerHere">Register here</a>
                     </div>
                 </div>

@@ -26,6 +26,7 @@ adsApp.controller('RegistrationController',['$scope', '$http', '$location', func
           })
           .error(function(data){
               console.log(data);
+              console.log('Register user error');
           });
     };
 
