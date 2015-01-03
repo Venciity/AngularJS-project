@@ -12,7 +12,8 @@ var adsApp =  angular
                 templateUrl: 'views/login.html'
             })
             .when('/register', {
-                templateUrl: 'views/register.html'
+                templateUrl: 'views/register.html',
+                controller: 'RegistrationController'
             })
             .otherwise({redirectTo: '/'});
     });
