@@ -25,10 +25,12 @@ adsApp.controller('RegistrationController',['$scope', '$http', '$location', func
       })
           .success(function(data){
               console.log(data);
+              success('Success registration');
               $location.path('/login');
           })
           .error(function(data){
               console.log(data);
+              error('Registration Error');
               console.log('Register user error');
           });
     };

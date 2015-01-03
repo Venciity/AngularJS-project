@@ -8,7 +8,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
         //$('<a href="" id="logoutUser" class="pull-right">logout</a>').appendTo('header');
         //$('<p class="pull-right username">{{ username }}</p>').appendTo('header');
         $('<li class="active"><a href="#">My Ads</a></li>').appendTo('.navigation ul');
-        $('<li class="active"><a href="#">Publish New Ad</a></li>').appendTo('.navigation ul');
+        $('<li class="active"><a href="#">Publish Ad</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#">Edit Profile</a></li>').appendTo('.navigation ul');
     }
 

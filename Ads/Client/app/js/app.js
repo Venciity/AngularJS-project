@@ -18,3 +18,21 @@ var adsApp =  angular
             })
             .otherwise({redirectTo: '/'});
     });
+
+function success(message) {
+    noty({
+        text: message,
+        type: 'success',
+        layout: 'center',
+        timeout: 1000
+    });
+}
+
+function error (text) {
+    noty({
+        text: text,
+        type: 'error',
+        layout: 'center',
+        timeout: 1000
+    });
+}
