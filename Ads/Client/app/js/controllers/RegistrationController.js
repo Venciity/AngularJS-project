@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('RegistrationController',['$scope', '$http', function ($scope, $http){
+adsApp.controller('RegistrationController',['$scope', '$http', '$location', function ($scope, $http, $location){
     $http.get('http://softuni-ads.azurewebsites.net/api/towns')
         .success(function(data){
             $scope.towns = data;
@@ -22,6 +22,7 @@ adsApp.controller('RegistrationController',['$scope', '$http', function ($scope,
       })
           .success(function(data){
               console.log(data);
+              $location.path('/login');
           })
           .error(function(data){
               console.log(data);
