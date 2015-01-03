@@ -46,6 +46,18 @@ footer {
     margin-bottom: 5px;
 }
 
+.row{
+    max-width: 100%;
+}
+
+.username {
+    margin-right: 25px;
+}
+
+#logoutUser {
+    margin-right: 5px;
+}
+
 img {
     max-width: 100%;
     max-height: 100%;

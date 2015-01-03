@@ -1,6 +1,9 @@
 'use strict';
 
 adsApp.controller('RegistrationController',['$scope', '$http', '$location', function ($scope, $http, $location){
+
+    $scope.pageTitle = "Registration";
+
     $http.get('http://softuni-ads.azurewebsites.net/api/towns')
         .success(function(data){
             $scope.towns = data;

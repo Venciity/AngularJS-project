@@ -1,8 +1,18 @@
-/**
- * Created by Ventsislav on 2.1.2015 г..
- */
+'use strict';
 
 adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) {
+
+    if(sessionStorage.length > 0){
+        $scope.username = sessionStorage.username;
+        $scope.logout = 'Logout';
+        //$('<a href="" id="logoutUser" class="pull-right">logout</a>').appendTo('header');
+        //$('<p class="pull-right username">{{ username }}</p>').appendTo('header');
+        $('<li class="active"><a href="#">My Ads</a></li>').appendTo('.navigation ul');
+        $('<li class="active"><a href="#">Publish New Ad</a></li>').appendTo('.navigation ul');
+        $('<li class="active"><a href="#">Edit Profile</a></li>').appendTo('.navigation ul');
+    }
+
+    $scope.pageTitle = "Home";
 
     $http.get('http://softuni-ads.azurewebsites.net/api/ads')
         .success(function(data) {
