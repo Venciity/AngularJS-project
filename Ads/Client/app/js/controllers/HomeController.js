@@ -54,7 +54,6 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
       );
     };
 
-    // TODO: FIX BUG with filters
     $scope.getAdsByTownId = function(id){
         if($scope.categoryId){
             $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + $scope.categoryId + '&townId=' + id)
@@ -81,5 +80,4 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
     };
 
     $scope.getAllAds();
-
 }]);
