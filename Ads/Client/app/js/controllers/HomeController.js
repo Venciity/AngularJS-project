@@ -5,8 +5,6 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
         $scope.logout = 'Logout';
-        //$('<a href="" id="logoutUser" class="pull-right">logout</a>').appendTo('header');
-        //$('<p class="pull-right username">{{ username }}</p>').appendTo('header');
         $('<li class="active"><a href="#">My Ads</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#/user/ads/publish">Publish Ad</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#">Edit Profile</a></li>').appendTo('.navigation ul');
@@ -14,14 +12,16 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
 
     $scope.pageTitle = "Home";
 
-    $http.get('http://softuni-ads.azurewebsites.net/api/ads')
-        .success(function(data) {
-            $scope.ads = data['ads'];
-        })
-        .error(function() {
-            error('Error occurred when get ads');
-        }
-    );
+    $scope.getAllAds = function(){
+        $http.get('http://softuni-ads.azurewebsites.net/api/ads')
+            .success(function(data) {
+                $scope.ads = data['ads'];
+            })
+            .error(function() {
+                error('Error occurred when get ads');
+            }
+        );
+    };
 
     $http.get('http://softuni-ads.azurewebsites.net/api/categories')
         .success(function(data){
@@ -40,5 +40,19 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
             error('Error occurred when get towns');
         }
     );
+
+    $scope.getAdsByCategoryId = function(id){
+      $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + id)
+          .success(function(data){
+              $scope.ads = data['ads'];
+          })
+          .error(function(data){
+              console.log(data);
+              error('Error occurred when get Ads by categoryId!');
+          }
+      );
+    };
+
+    $scope.getAllAds();
 
 }]);
