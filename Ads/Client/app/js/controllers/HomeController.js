@@ -56,15 +56,28 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
 
     // TODO: FIX BUG with filters
     $scope.getAdsByTownId = function(id){
-        $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + $scope.categoryId + '&townId=' + id)
-            .success(function(data){
-                $scope.ads = data['ads'];
-            })
-            .error(function(data){
-                console.log(data);
-                error('Error occurred when get Ads by categoryId & TownId!');
-            }
-        );
+        if($scope.categoryId){
+            $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + $scope.categoryId + '&townId=' + id)
+                .success(function(data){
+                    $scope.ads = data['ads'];
+                })
+                .error(function(data){
+                    console.log(data);
+                    error('Error occurred when get Ads by categoryId & TownId!');
+                }
+            );
+        }
+        else{
+            $http.get('http://softuni-ads.azurewebsites.net/api/ads?townId=' + id)
+                .success(function(data){
+                    $scope.ads = data['ads'];
+                })
+                .error(function(data){
+                    console.log(data);
+                    error('Error occurred when get Ads by categoryId & TownId!');
+                }
+            );
+        }
     };
 
     $scope.getAllAds();
