@@ -8,7 +8,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
         //$('<a href="" id="logoutUser" class="pull-right">logout</a>').appendTo('header');
         //$('<p class="pull-right username">{{ username }}</p>').appendTo('header');
         $('<li class="active"><a href="#">My Ads</a></li>').appendTo('.navigation ul');
-        $('<li class="active"><a href="#">Publish Ad</a></li>').appendTo('.navigation ul');
+        $('<li class="active"><a href="#/user/ads/publish">Publish Ad</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#">Edit Profile</a></li>').appendTo('.navigation ul');
     }
 
@@ -19,7 +19,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
             $scope.ads = data['ads'];
         })
         .error(function() {
-            console.log('Error when get ads')
+            error('Error occurred when get ads');
         }
     );
 
@@ -28,7 +28,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
             $scope.categories = data;
         })
         .error(function(){
-            console.log('Error when get categories');
+            error('Error occurred when get categories');
         }
     );
 
@@ -37,7 +37,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
             $scope.towns = data;
         })
         .error(function(){
-            console.log('Error when get towns');
+            error('Error occurred when get towns');
         }
     );
 

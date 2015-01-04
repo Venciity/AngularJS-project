@@ -31,7 +31,7 @@ adsApp.controller('RegistrationController',['$scope', '$http', '$location', func
                   password: $scope.registrationPassword
               })
                   .success(function(data){
-                      console.log(data);
+                      //console.log(data);
                       success('Success login');
                       sessionStorage.accessToken = data.access_token;
                       sessionStorage.username = data.username;

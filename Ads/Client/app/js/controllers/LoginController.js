@@ -8,7 +8,7 @@ adsApp.controller('LoginController',['$scope', '$http', '$location', function($s
             password: $scope.loginPassword
         })
             .success(function(data){
-                console.log(data);
+                //console.log(data);
                 success('Success login');
                 sessionStorage.accessToken = data.access_token;
                 sessionStorage.username = data.username;
@@ -16,7 +16,7 @@ adsApp.controller('LoginController',['$scope', '$http', '$location', function($s
             })
             .error(function(data){
                 console.log(data);
-                error('Login Error');
+                error('Error occurred when the user trying to login');
             })
     }
 }]);

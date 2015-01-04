@@ -57,6 +57,7 @@
                     <label for="inputTown" class="col-lg-2 control-label">Town</label>
                     <div class="col-lg-10">
                         <select name="town" id="inputTown" ng-model="registrationTown">
+                            <option value="" selected disabled>Choose Town</option>
                             <option ng-repeat="town in towns" value="{{ town.name }}">{{ town.name }}</option>
                         </select>
                     </div>

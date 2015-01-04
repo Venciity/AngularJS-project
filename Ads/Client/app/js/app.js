@@ -16,6 +16,10 @@ var adsApp =  angular
                 templateUrl: 'views/register.html',
                 controller: 'RegistrationController'
             })
+            .when('/user/ads/publish', {
+                templateUrl: 'views/publish-new-ad.html',
+                controller: 'PublishNewAdController'
+            })
             .otherwise({redirectTo: '/'});
     });
 
@@ -24,7 +28,7 @@ function success(message) {
         text: message,
         type: 'success',
         layout: 'center',
-        timeout: 1000
+        timeout: 1500
     });
 }
 
@@ -33,6 +37,6 @@ function error (text) {
         text: text,
         type: 'error',
         layout: 'center',
-        timeout: 1000
+        timeout: 1500
     });
 }
