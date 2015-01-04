@@ -20,6 +20,10 @@ var adsApp =  angular
                 templateUrl: 'views/publish-new-ad.html',
                 controller: 'PublishNewAdController'
             })
+            .when('/user/ads', {
+                templateUrl: 'views/my-ads.html',
+                controller: 'MyAdsController'
+            })
             .otherwise({redirectTo: '/'});
     });
 

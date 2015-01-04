@@ -11,11 +11,16 @@ footer {
     margin-top: 10px;
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .navbar {
     border-radius: 0;
 }
 
-.navigation, .loginRegister, .categories, .towns, .loginForm {
+.navigation, .loginRegister, .categories, .towns, .loginForm, .adsNavigation {
     padding: 10px;
     margin: 5px;
     border: 2px solid #000000;
@@ -72,9 +77,6 @@ footer {
     text-align: center;
 }
 
-img {
-    max-width: 100%;
-    max-height: 100%;
+.myAdsLabel {
+    margin-top: 4px;
 }
-
-
