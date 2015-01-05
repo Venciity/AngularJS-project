@@ -5,7 +5,7 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
         $scope.logout = 'Logout';
-        $('<li class="active"><a href="#">My Ads</a></li>').appendTo('.navigation ul');
+        $('<li class="active"><a href="#/user/ads/">My Ads</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#/user/ads/publish">Publish Ad</a></li>').appendTo('.navigation ul');
         $('<li class="active"><a href="#">Edit Profile</a></li>').appendTo('.navigation ul');
     }

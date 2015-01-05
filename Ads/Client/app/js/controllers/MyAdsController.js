@@ -53,4 +53,26 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', function($
 
     $scope.loadMyAds();
 
+    $scope.deactivateAd = function(id){
+        var request = {
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {}
+        };
+
+        $http(request)
+            .success(function(data){
+                console.log(data);
+                success('Success deactivated ad.');
+                $scope.loadMyAds();
+            })
+            .error(function(data){
+                console.log(data);
+            }
+        );
+    }
+
 }]);
