@@ -64,13 +64,33 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', function($
         };
 
         $http(request)
-            .success(function(data){
-                console.log(data);
+            .success(function(){
                 success('Success deactivated ad.');
                 $scope.loadMyAds();
             })
-            .error(function(data){
-                console.log(data);
+            .error(function(){
+                error('Error occurred when deactivated ad');
+            }
+        );
+    };
+
+    $scope.publishAgainAd = function(id){
+        var request = {
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {}
+        };
+
+        $http(request)
+            .success(function(){
+                success('Success published again ad.');
+                $scope.loadMyAds();
+            })
+            .error(function(){
+                error('Error occurred when published again ad');
             }
         );
     }
