@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('MyAdsController', ['$scope', '$http', '$location', function($scope, $http, $location){
+adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
     $scope.pageTitle = 'My Ads';
 
     $(document).ready(function(){
@@ -133,6 +133,11 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', function($
                 error('Error occurred when published again ad');
             }
         );
-    }
+    };
+
+    $scope.deleteAd = function(id){
+        $rootScope.deleteAdId = id;
+        $location.path('/user/ads/delete');
+    };
 
 }]);

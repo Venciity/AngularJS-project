@@ -24,6 +24,10 @@ var adsApp =  angular
                 templateUrl: 'views/my-ads.html',
                 controller: 'MyAdsController'
             })
+            .when('/user/ads/delete', {
+                templateUrl: 'views/delete-my-ad.html',
+                controller: 'DeleteMyAdController'
+            })
             .otherwise({redirectTo: '/'});
     });
 
