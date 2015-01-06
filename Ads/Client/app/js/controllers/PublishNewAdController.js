@@ -55,7 +55,8 @@ adsApp.controller('PublishNewAdController',['$scope', '$http', '$location', func
         $http(request)
             .success(function(data){
                 console.log(data);
-                success('Advertisement submitted for approval. Once approved, it will be published.')
+                success('Advertisement submitted for approval. Once approved, it will be published.');
+                $location.path('/user/ads');
             })
             .error(function(data){
                 console.log(data);

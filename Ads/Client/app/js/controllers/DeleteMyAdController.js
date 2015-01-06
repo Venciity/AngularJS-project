@@ -38,6 +38,7 @@ adsApp.controller('DeleteMyAdController', ['$scope', '$http', '$location', '$roo
             $http(request)
                 .success(function(){
                     success('Successful deleted ad');
+                    $location.path('/user/ads');
                 })
                 .error(function(data){
                     console.log(data);

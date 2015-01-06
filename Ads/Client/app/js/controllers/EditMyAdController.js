@@ -90,16 +90,19 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
             };
 
             $http(request)
-                .success(function(data){
+                .success(function(){
                     success('Successfully edited ad');
-                    console.log(data);
+                    $location.path('/user/ads');
                 })
-                .error(function(data){
+                .error(function(){
                     error('Error edit ad');
-                    console.log(data);
                 }
             );
         };
+
+        $scope.backToMyAds = function(){
+            $location.path('/user/ads');
+        }
 
     }
 ]);
