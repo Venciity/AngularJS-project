@@ -83,7 +83,7 @@
                     <div class="{{ ad.firstButtonClass }}" ng-click="deactivateAd(ad.id)">{{ ad.firstButtonText }}</div>
                 </div>
                 <div class="col-md-3 text-center specialButton">
-                    <div class="{{ ad.secondButtonClass }}">{{ ad.secondButtonText }}</div>
+                    <div class="{{ ad.secondButtonClass }}" ng-click="editAd(ad.id)">{{ ad.secondButtonText }}</div>
                 </div>
                 <div class="col-md-3 text-center specialButton">
                     <div class="{{ ad.thirdButtonClass }}" ng-click="publishAgainAd(ad.id)">{{ ad.thirdButtonText }}</div>

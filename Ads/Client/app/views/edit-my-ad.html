@@ -1,0 +1,73 @@
+<div ng-include="'partials/header.html'"></div>
+<div class="container">
+    <div class="col-lg-3">
+        <div class="navigation">
+            <h4>Navigation</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#/user/ads/">My Ads</a></li>
+                <li class="active"><a href="#/user/ads/publish">Publish Ad</a></li>
+                <li class="active"><a href="">Edit profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-9" >
+        <div class="ad">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="image-container preview-image">
+                        <img src="{{ ad.imageDataUrl }}" alt="Missing image"/>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputTitle" placeholder="{{ ad.title }}" ng-model="editTitle">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputText" class="col-lg-2 control-label">Text</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputText" placeholder="{{ ad.text }}" ng-model="editText">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="col-lg-2 control-label">Image</label>
+                                <div class="col-lg-10">
+                                    <input type="file" class="form-control" id="image">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCategory" class="col-lg-2 control-label">Category</label>
+                                <div class="col-lg-10">
+                                    <select name="inputCategory" id="inputCategory" class="choose" ng-model="editCategory">
+                                        <option value="" selected disabled>Select Category</option>
+                                        <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTown" class="col-lg-2 control-label">Town</label>
+                                <div class="col-lg-10">
+                                    <select name="inputCategory" id="inputTown" class="choose" ng-model="editTown">
+                                        <option value="" selected disabled>Select Town</option>
+                                        <option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="submit" class="btn btn-success" ng-click="editAd()">Edit</button>
+                                    <button class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -140,4 +140,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
         $location.path('/user/ads/delete');
     };
 
+    $scope.editAd = function(id){
+        $rootScope.editAdId = id;
+        $location.path('/user/ads/edit');
+    };
+
 }]);
