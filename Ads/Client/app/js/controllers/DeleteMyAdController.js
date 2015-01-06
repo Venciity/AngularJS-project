@@ -44,6 +44,10 @@ adsApp.controller('DeleteMyAdController', ['$scope', '$http', '$location', '$roo
                     console.log(data);
                     error('Error occurred when delete ad');
                 })
-        }
+        };
+
+        $scope.backToMyAds = function(){
+            $location.path('/user/ads');
+        };
     }
 ]);

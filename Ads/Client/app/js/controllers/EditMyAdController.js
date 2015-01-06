@@ -102,7 +102,6 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
 
         $scope.backToMyAds = function(){
             $location.path('/user/ads');
-        }
-
+        };
     }
 ]);
