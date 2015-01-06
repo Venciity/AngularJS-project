@@ -95,7 +95,7 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
                     console.log(data);
                 })
                 .error(function(data){
-                    error('Error edit ad')
+                    error('Error edit ad');
                     console.log(data);
                 }
             );
