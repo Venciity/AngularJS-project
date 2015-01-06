@@ -5,6 +5,11 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
         $scope.adData = {};
         $scope.pageTitle = 'Edit Ad';
 
+        if(sessionStorage.length > 0){
+            $scope.username = sessionStorage.username;
+            $scope.logout = 'Logout';
+        }
+
         $scope.getAdToBeEditted = function(){
             var request = {
                 method: 'GET',
