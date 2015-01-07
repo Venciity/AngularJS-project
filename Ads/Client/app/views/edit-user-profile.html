@@ -65,25 +65,25 @@
                             <div class="form-group">
                                 <label for="inputOldPassword" class="col-lg-6 control-label">Old password</label>
                                 <div class="col-lg-6">
-                                    <input type="password" class="form-control" id="inputOldPassword">
+                                    <input type="password" class="form-control" id="inputOldPassword" ng-model="oldPassword">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputNewPassword" class="col-lg-6 control-label">New Password</label>
                                 <div class="col-lg-6">
-                                    <input type="password" class="form-control" id="inputNewPassword">
+                                    <input type="password" class="form-control" id="inputNewPassword" ng-model="newPassword">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputConfirmPassword" class="col-lg-6 control-label">Confirm new password</label>
                                 <div class="col-lg-6">
-                                    <input type="password" class="form-control" id="inputConfirmPassword">
+                                    <input type="password" class="form-control" id="inputConfirmPassword" ng-model="confirmPassword">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12 col-lg-offset-2">
                                     <div class="col-lg-6 text-center">
-                                        <button type="submit" class="btn btn-success">Change Password</button>
+                                        <button type="submit" class="btn btn-success" ng-click="changeUserPassword()">Change Password</button>
                                     </div>
                                     <div class="col-lg-6 text-center">
                                         <button class="btn btn-default">Cancel</button>

@@ -57,10 +57,34 @@ adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
 
             $http(request)
                 .success(function(){
-                    success('Successfully updated prifle.');
+                    success('Successfully updated profile.');
                 })
                 .error(function(){
                     error('Error update profile');
+                }
+            );
+        };
+
+        $scope.changeUserPassword = function(){
+            var request = {
+                method: 'PUT',
+                url: 'http://softuni-ads.azurewebsites.net/api/user/changepassword',
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.accessToken
+                },
+                data: {
+                    'oldPassword': $scope.oldPassword,
+                    'newPassword': $scope.newPassword,
+                    'confirmPassword': $scope.confirmPassword
+                }
+            };
+
+            $http(request)
+                .success(function(){
+                    success('Successfully changed password.');
+                })
+                .error(function(){
+                    error('Error occurred when changed password.');
                 }
             );
         };
