@@ -26,7 +26,8 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
                 })
                 .error(function(data){
                     console.log(data);
-                })
+                }
+            );
         };
 
         $scope.getAdToBeEditted();
