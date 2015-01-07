@@ -23,6 +23,10 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
             $http(request)
                 .success(function(data){
                     $scope.ad = data;
+                    $('#inputTitle').val(data.title);
+                    $('#inputText').val(data.text);
+                    $('#inputCategory').val(data.categoryId);
+                    $('#inputTown').val(data.townId);
                 })
                 .error(function(data){
                     console.log(data);
