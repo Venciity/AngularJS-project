@@ -104,5 +104,11 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
         $scope.backToMyAds = function(){
             $location.path('/user/ads');
         };
+
+        $scope.logoutUser = function(){
+            sessionStorage.clear();
+            success('Successfully logout');
+            $location.path('/#');
+        };
     }
 ]);

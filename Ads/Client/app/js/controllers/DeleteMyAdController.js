@@ -49,5 +49,11 @@ adsApp.controller('DeleteMyAdController', ['$scope', '$http', '$location', '$roo
         $scope.backToMyAds = function(){
             $location.path('/user/ads');
         };
+
+        $scope.logoutUser = function(){
+            sessionStorage.clear();
+            success('Successfully logout');
+            $location.path('/#');
+        };
     }
 ]);

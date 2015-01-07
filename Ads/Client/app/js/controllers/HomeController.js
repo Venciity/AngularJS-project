@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) {
+adsApp.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -80,4 +80,10 @@ adsApp.controller('HomeController', ['$scope', '$http', function($scope, $http) 
     };
 
     $scope.getAllAds();
+
+    $scope.logoutUser = function(){
+        sessionStorage.clear();
+        success('Successfully logout');
+        $location.path('/#');
+    };
 }]);
