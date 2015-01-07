@@ -23,10 +23,10 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
             $http(request)
                 .success(function(data){
                     $scope.ad = data;
-                    $('#inputTitle').val(data.title);
-                    $('#inputText').val(data.text);
-                    $('#inputCategory').val(data.categoryId);
-                    $('#inputTown').val(data.townId);
+                    $scope.editTitle = data.title;
+                    $scope.editText = data.text;
+                    $scope.editCategory = data.categoryId;
+                    $scope.editTown = data.townId;
                 })
                 .error(function(data){
                     console.log(data);

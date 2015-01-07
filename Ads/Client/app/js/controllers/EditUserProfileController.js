@@ -31,10 +31,10 @@ adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
             $http(request)
                 .success(function(data){
                     $scope.userInfo = data;
-                    $('#inputName').val(data.name);
-                    $('#inputEmail').val(data.email);
-                    $('#inputPhone').val(data.phoneNumber);
-                    $('#inputTown').val(data.townId);
+                    $scope.updateName = data.name;
+                    $scope.updateEmail = data.email;
+                    $scope.updatePhone = data.phoneNumber;
+                    $scope.updateTown = data.townId;
                 })
                 .error(function(){
                     error('Error get user info');
