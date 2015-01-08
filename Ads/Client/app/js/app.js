@@ -5,36 +5,40 @@ var adsApp =  angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/home.html',
+                templateUrl: 'views/user/home.html',
                 controller: 'HomeController'
             })
             .when('/login', {
-                templateUrl: 'views/login.html',
+                templateUrl: 'views/user/login.html',
                 controller: 'LoginController'
             })
             .when('/register', {
-                templateUrl: 'views/register.html',
+                templateUrl: 'views/user/register.html',
                 controller: 'RegistrationController'
             })
             .when('/user/ads/publish', {
-                templateUrl: 'views/publish-new-ad.html',
+                templateUrl: 'views/user/publish-new-ad.html',
                 controller: 'PublishNewAdController'
             })
             .when('/user/ads', {
-                templateUrl: 'views/my-ads.html',
+                templateUrl: 'views/user/my-ads.html',
                 controller: 'MyAdsController'
             })
             .when('/user/ads/delete', {
-                templateUrl: 'views/delete-my-ad.html',
+                templateUrl: 'views/user/delete-my-ad.html',
                 controller: 'DeleteMyAdController'
             })
             .when('/user/ads/edit', {
-                templateUrl: 'views/edit-my-ad.html',
+                templateUrl: 'views/user/edit-my-ad.html',
                 controller: 'EditMyAdController'
             })
             .when('/user/profile', {
-                templateUrl: 'views/edit-user-profile.html',
+                templateUrl: 'views/user/edit-user-profile.html',
                 controller: 'EditUserProfileController'
+            })
+            .when('/admin/home', {
+                templateUrl: 'views/admin/AdminHome.html',
+                controller: 'AdminHomeController'
             })
             .otherwise({redirectTo: '/'});
     });
@@ -46,7 +50,7 @@ function success(message) {
         layout: 'center',
         timeout: 1500
     });
-}
+};
 
 function error (text) {
     noty({
@@ -55,4 +59,4 @@ function error (text) {
         layout: 'center',
         timeout: 1500
     });
-}
+};
