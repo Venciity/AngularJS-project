@@ -40,6 +40,10 @@ var adsApp =  angular
                 templateUrl: 'views/admin/AdminHome.html',
                 controller: 'AdminHomeController'
             })
+            .when('/admin/ads/edit', {
+                templateUrl: 'views/admin/AdminEditAd.html',
+                controller: 'AdminEditAdController'
+            })
             .otherwise({redirectTo: '/'});
     });
 

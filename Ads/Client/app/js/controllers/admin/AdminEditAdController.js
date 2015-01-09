@@ -1,19 +1,19 @@
 'use strict';
 
-adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootScope',
+adsApp.controller('AdminEditAdController', ['$scope', '$http', '$location', '$rootScope',
     function($scope, $http, $location, $rootScope){
         $scope.adData = {};
-        $scope.pageTitle = 'Edit Ad';
+        $scope.pageTitle = 'Administration Edit Ad';
 
         if(sessionStorage.length > 0){
             $scope.username = sessionStorage.username;
             $scope.logout = 'Logout';
         }
 
-        $scope.getAdToBeEditted = function(){
+        $scope.getAdToBeEdited = function(){
             var request = {
                 method: 'GET',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + $rootScope.editAdId,
+                url: 'http://softuni-ads.azurewebsites.net/api/admin/ads/' + $rootScope.editAdIdByAdmin,
                 headers: {
                     'Authorization': 'Bearer ' + sessionStorage.accessToken
                 },
@@ -28,6 +28,9 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
                     $scope.editText = data.text;
                     $scope.editCategory = data.categoryId;
                     $scope.editTown = data.townId;
+                    $scope.editUsername = data.ownerUsername;
+                    $scope.editDate = data.date;
+                    $scope.editStatus = data.status;
                 })
                 .error(function(data){
                     console.log(data);
@@ -35,7 +38,7 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
             );
         };
 
-        $scope.getAdToBeEditted();
+        $scope.getAdToBeEdited();
 
         $http.get('http://softuni-ads.azurewebsites.net/api/categories')
             .success(function(data){
@@ -81,7 +84,7 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
 
             var request = {
                 method: 'PUT',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + $rootScope.editAdId,
+                url: 'http://softuni-ads.azurewebsites.net/api/admin/ads/' + $rootScope.editAdIdByAdmin,
                 headers: {
                     'Authorization': 'Bearer ' + sessionStorage.accessToken
                 },
@@ -91,14 +94,16 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
                     'changeImage': changeImage,
                     'ImageDataURL': image,
                     'categoryId': $scope.editCategory,
-                    'townId': $scope.editTown
+                    'townId': $scope.editTown,
+                    'date': $scope.editDate,
+                    'status': $scope.editStatus
                 }
             };
 
             $http(request)
                 .success(function(){
                     success('Successfully edited ad');
-                    $location.path('/user/ads');
+                    $location.path('/admin/home');
                 })
                 .error(function(){
                     error('Error edit ad');
@@ -107,7 +112,7 @@ adsApp.controller('EditMyAdController', ['$scope', '$http', '$location', '$rootS
         };
 
         $scope.backToMyAds = function(){
-            $location.path('/user/ads');
+            $location.path('/admin/home');
         };
 
         $scope.logoutUser = function(){

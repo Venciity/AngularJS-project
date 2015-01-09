@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', function($scope, $http, $location){
+adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -135,6 +135,16 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', functi
                 error('Error occurred when reject ad');
             }
         );
+    };
+
+    $scope.deleteAd = function(id){
+        $rootScope.deleteAdIdByAdmin = id;
+        $location.path('/admin/ads/delete');
+    };
+
+    $scope.editAd = function(id){
+        $rootScope.editAdIdByAdmin = id;
+        $location.path('/admin/ads/edit');
     };
 
     $http.get('http://softuni-ads.azurewebsites.net/api/categories')

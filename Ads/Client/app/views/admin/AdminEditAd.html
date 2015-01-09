@@ -4,10 +4,10 @@
         <div class="navigation">
             <h4>Navigation</h4>
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="active"><a href="#/user/ads/">My Ads</a></li>
-                <li class="active"><a href="#/user/ads/publish">Publish Ad</a></li>
-                <li class="active"><a href="#/user/profile">Edit profile</a></li>
+                <li class="active"><a href="">Ads</a></li>
+                <li class="active"><a href="">Users</a></li>
+                <li class="active"><a href="">Categories</a></li>
+                <li class="active"><a href="">Towns</a></li>
             </ul>
         </div>
     </div>
@@ -38,6 +38,24 @@
                                 <label for="image" class="col-lg-2 control-label">Image</label>
                                 <div class="col-lg-10">
                                     <input type="file" class="form-control" id="image" onchange="angular.element(this).scope().fileSelected(this)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputUsername" ng-model="editUsername">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDate" class="col-lg-2 control-label">Date</label>
+                                <div class="col-lg-10">
+                                    <input type="datetime" class="form-control" id="inputDate" ng-model="editDate"> <!-- TODO: fix date input -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="col-lg-2 control-label">Status</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputStatus" ng-model="editStatus"> <!-- TODO: fix date input -->
                                 </div>
                             </div>
                             <div class="form-group">
