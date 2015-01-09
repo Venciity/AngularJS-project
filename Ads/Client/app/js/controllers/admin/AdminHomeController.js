@@ -95,6 +95,48 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', functi
         }
     };
 
+    $scope.approveAd = function(id){
+        var request = {
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads/approve/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {}
+        };
+
+        $http(request)
+            .success(function(){
+                success('Successfully approve ad');
+                $scope.getAllAds();
+            })
+            .error(function(){
+                error('Error occurred when approve ad');
+            }
+        );
+    };
+
+    $scope.rejectAd = function(id){
+        var request = {
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads/reject/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {}
+        };
+
+        $http(request)
+            .success(function(){
+                success('Successfully reject ad');
+                $scope.getAllAds();
+            })
+            .error(function(){
+                error('Error occurred when reject ad');
+            }
+        );
+    };
+
     $http.get('http://softuni-ads.azurewebsites.net/api/categories')
         .success(function(data){
             $scope.categories = data;
