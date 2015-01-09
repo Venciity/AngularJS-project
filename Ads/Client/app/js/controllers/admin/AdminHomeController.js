@@ -23,7 +23,6 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', functi
         $http(request)
             .success(function(data){
                 $scope.ads = data['ads'];
-                console.log(data['ads']);
             })
             .error(function(data){
                 error('Error get All ads by admin');
@@ -34,26 +33,66 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', functi
 
     $scope.getAllAds();
 
-    $scope.getAdsByStatus = function(status){
+    $scope.getAdsByCategoryId = function(id){
         var request = {
             method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?status=' + status,
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?CategoryId=' + id,
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.accessToken
             },
             data: {}
         };
-
         $http(request)
             .success(function(data){
+                $scope.categoryId = id;
                 $scope.ads = data['ads'];
-                console.log(data['ads']);
             })
             .error(function(data){
-                error('Error get All ads by admin');
                 console.log(data);
+                error('Error occurred when get Ads by categoryId!');
             }
         );
+    };
+
+    $scope.getAdsByTownId = function(id){
+        if($scope.categoryId){
+            var request = {
+                method: 'GET',
+                url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?CategoryId=' + $scope.categoryId + '&townId=' + id,
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.accessToken
+                },
+                data: {}
+            };
+            $http(request)
+                .success(function(data){
+                    $scope.ads = data['ads'];
+                })
+                .error(function(data){
+                    console.log(data);
+                    error('Error occurred when get Ads by categoryId & TownId!');
+                }
+            );
+        }
+        else{
+            var request = {
+                method: 'GET',
+                url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?townId=' + id,
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.accessToken
+                },
+                data: {}
+            };
+            $http(request)
+                .success(function(data){
+                    $scope.ads = data['ads'];
+                })
+                .error(function(data){
+                    console.log(data);
+                    error('Error occurred when get Ads by categoryId & TownId!');
+                }
+            );
+        }
     };
 
     $http.get('http://softuni-ads.azurewebsites.net/api/categories')
