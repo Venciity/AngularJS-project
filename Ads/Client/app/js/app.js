@@ -44,6 +44,10 @@ var adsApp =  angular
                 templateUrl: 'views/admin/AdminEditAd.html',
                 controller: 'AdminEditAdController'
             })
+            .when('/admin/ads/delete', {
+                templateUrl: 'views/admin/AdminDeleteAd.html',
+                controller: 'AdminDeleteAdController'
+            })
             .otherwise({redirectTo: '/'});
     });
 

@@ -111,7 +111,7 @@ adsApp.controller('AdminEditAdController', ['$scope', '$http', '$location', '$ro
             );
         };
 
-        $scope.backToMyAds = function(){
+        $scope.backToAds = function(){
             $location.path('/admin/home');
         };
 
