@@ -84,6 +84,10 @@ var adsApp =  angular
                 templateUrl: 'views/admin/towns/AdminCreateTown.html',
                 controller: 'AdminCreateTownController'
             })
+            .when('/admin/towns/edit', {
+                templateUrl: 'views/admin/towns/AdminEditTown.html',
+                controller: 'AdminEditTownController'
+            })
             .otherwise({redirectTo: '/'});
     });
 

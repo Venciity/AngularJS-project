@@ -1,46 +1,46 @@
 'use strict';
 
-adsApp.controller('AdminEditCategoryController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+adsApp.controller('AdminEditTownController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
         $scope.logout = 'Logout';
     }
 
-    $scope.editCategoryId = $rootScope.editCategory['id'];
-    $scope.editCategoryName = $rootScope.editCategory['username'];
+    $scope.editTownId = $rootScope.editTown['id'];
+    $scope.editTownName = $rootScope.editTown['username'];
 
     $scope.pageTitle = 'Administration - Edit Category';
 
-    $scope.editCategory = function(){
+    $scope.editTown = function(){
         var request = {
             method: 'PUT',
-            url: 'http://softuni-ads.azurewebsites.net/api/admin/categories/' + $scope.editCategoryId,
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/towns/' + $scope.editTownId,
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.accessToken
             },
             data: {
-                'name': $scope.editCategoryName
+                'name': $scope.editTownName
             }
         };
 
         $http(request)
             .success(function(data){
                 console.log(data);
-                success('Successfully edited category');
+                success('Successfully edited town');
                 $location.path('admin/categories/list');
                 //success(data['message']);
             })
             .error(function(data){
-                error('Error edit category');
+                error('Error edit town');
                 console.log(data);
             }
         );
     };
 
 
-    $scope.backToCategories = function(){
-        $location.path('admin/categories/list');
+    $scope.backToTowns = function(){
+        $location.path('admin/towns/list');
     };
 
     $scope.logoutUser = function(){
