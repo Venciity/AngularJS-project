@@ -24,9 +24,16 @@ adsApp.controller('AdminEditUserController', ['$scope', '$http', '$location', '$
         $scope.updateEmail = $rootScope.editUser['email'];
         $scope.updatePhone = $rootScope.editUser['phoneNumber'];
         $scope.updateTown = $rootScope.editUser['townId'];
+        $scope.isAdmin = $rootScope.editUser['isAdmin'];
 
 
         $scope.editUserProfile = function(){
+            if($scope.isAdmin === true){
+                var isAdmin = true;
+            }
+            else {
+                var isAdmin = false;
+            }
             var request = {
                 method: 'PUT',
                 url: 'http://softuni-ads.azurewebsites.net/api/admin/user/' + $scope.editUsername,
@@ -38,13 +45,14 @@ adsApp.controller('AdminEditUserController', ['$scope', '$http', '$location', '$
                     'email': $scope.updateEmail,
                     'phoneNumber': $scope.updatePhone,
                     'townId': $scope.updateTown,
-                    'isAdmin': $scope.isAdmin
+                    'isAdmin': isAdmin
                 }
             };
 
             $http(request)
                 .success(function(){
                     success('Successfully edited profile.');
+                    $location.path('/admin/users/list');
                 })
                 .error(function(){
                     error('Error edit profile');
@@ -77,7 +85,7 @@ adsApp.controller('AdminEditUserController', ['$scope', '$http', '$location', '$
         };
 
         $scope.cancel = function(){
-            $location.path('/admins/users/list');
+            $location.path('/admin/users/list');
         };
 
         $scope.logoutUser = function(){
