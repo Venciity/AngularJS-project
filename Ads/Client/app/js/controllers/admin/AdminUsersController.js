@@ -38,4 +38,10 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
         $location.path('/admin/users/edit');
     };
 
+    $scope.deleteUser = function(user){
+        console.log(user);
+        $rootScope.user = user;
+        $location.path('/admin/users/delete');
+    };
+
 }]);
