@@ -33,6 +33,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="text-center">
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" ng-click="setPage(bigCurrentPage)"></pagination>
+        </div>
         <div class="col-md-12 text-center">
             <div class="btn btn-success" ng-click="createCategory()">Create New Category</div>
         </div>

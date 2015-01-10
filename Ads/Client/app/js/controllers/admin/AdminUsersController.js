@@ -7,6 +7,8 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
         $scope.logout = 'Logout';
     }
 
+    $scope.bigCurrentPage = 1;
+    $scope.maxSize = 8;
 
     $scope.pageTitle = 'Administration - Users';
 
@@ -23,6 +25,7 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
         $http(request)
             .success(function(data){
                 $scope.users = data['users'];
+                $scope.bigTotalItems = data['numItems'];
             })
             .error(function(data){
                 error('Error get All users by admin');
@@ -41,6 +44,31 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
     $scope.deleteUser = function(user){
         $rootScope.user = user;
         $location.path('/admin/users/delete');
+    };
+
+    $scope.setPage = function(pageNo){
+        $scope.bigCurrentPage = pageNo;
+
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/users?StartPage=' + $scope.bigCurrentPage,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {
+
+            }
+        };
+
+        $http(request)
+            .success(function(data) {
+                $scope.users = data['users'];
+                $scope.bigTotalItems = data['numItems'];
+
+            })
+            .error(function() {
+                error('Cannot get ads');
+            });
     };
 
     $scope.logoutUser = function(){
