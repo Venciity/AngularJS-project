@@ -7,6 +7,8 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
         $scope.logout = 'Logout';
     }
 
+    $scope.bigCurrentPage = 1;
+    $scope.maxSize = 8;
 
     $scope.pageTitle = 'Administration Home';
 
@@ -23,6 +25,7 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
         $http(request)
             .success(function(data){
                 $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
             })
             .error(function(data){
                 error('Error get All ads by admin');
@@ -164,6 +167,31 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
             error('Error occurred when get towns');
         }
     );
+
+    $scope.setPage = function(pageNo){
+        $scope.bigCurrentPage = pageNo;
+
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + $scope.bigCurrentPage,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {
+
+            }
+        };
+
+        $http(request)
+            .success(function(data) {
+                $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
+
+            })
+            .error(function() {
+                error('Cannot get ads');
+            });
+    };
 
     $scope.logoutUser = function(){
         sessionStorage.clear();
