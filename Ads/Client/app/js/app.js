@@ -64,6 +64,14 @@ var adsApp =  angular
                 templateUrl: 'views/admin/categories/AdminCategories.html',
                 controller: 'AdminCategoriesController'
             })
+            .when('/admin/categories/delete', {
+                templateUrl: 'views/admin/categories/AdminDeleteCategory.html',
+                controller: 'AdminDeleteCategoryController'
+            })
+            .when('/admin/categories/edit', {
+                templateUrl: 'views/admin/categories/AdminEditCategory.html',
+                controller: 'AdminEditCategoryController'
+            })
             .otherwise({redirectTo: '/'});
     });
 

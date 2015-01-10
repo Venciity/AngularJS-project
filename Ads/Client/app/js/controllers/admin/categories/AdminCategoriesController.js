@@ -33,13 +33,13 @@ adsApp.controller('AdminCategoriesController', ['$scope', '$http', '$location', 
 
     $scope.getAllCategories();
 
-    $scope.editCategory = function(id){
-        $rootScope.editCategoryId = id;
+    $scope.editCategory = function(category){
+        $rootScope.editCategory = category;
         $location.path('/admin/categories/edit');
     };
 
-    $scope.deleteCategory = function(id){
-        $rootScope.deleteCategoryId = id;
+    $scope.deleteCategory = function(category){
+        $rootScope.deleteCategory = category;
         $location.path('/admin/categories/delete');
     };
 
