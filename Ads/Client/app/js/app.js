@@ -80,6 +80,10 @@ var adsApp =  angular
                 templateUrl: 'views/admin/towns/AdminTowns.html',
                 controller: 'AdminTownsController'
             })
+            .when('/admin/towns/create', {
+                templateUrl: 'views/admin/towns/AdminCreateTown.html',
+                controller: 'AdminCreateTownController'
+            })
             .otherwise({redirectTo: '/'});
     });
 
