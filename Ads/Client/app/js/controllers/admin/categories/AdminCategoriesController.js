@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+adsApp.controller('AdminCategoriesController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -8,12 +8,12 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
     }
 
 
-    $scope.pageTitle = 'Administration - Users';
+    $scope.pageTitle = 'Administration - Categories';
 
-    $scope.getAllUsers = function(){
+    $scope.getAllCategories = function(){
         var request = {
             method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/admin/users',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/categories',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.accessToken
             },
@@ -22,7 +22,7 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
 
         $http(request)
             .success(function(data){
-                $scope.users = data['users'];
+                $scope.categories = data['categories'];
             })
             .error(function(data){
                 error('Error get All users by admin');
@@ -31,16 +31,16 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
         );
     };
 
-    $scope.getAllUsers();
+    $scope.getAllCategories();
 
-    $scope.editUser = function(user){
-        $rootScope.editUser = user;
-        $location.path('/admin/users/edit');
+    $scope.editCategory = function(id){
+        $rootScope.editCategoryId = id;
+        $location.path('/admin/categories/edit');
     };
 
-    $scope.deleteUser = function(user){
-        $rootScope.user = user;
-        $location.path('/admin/users/delete');
+    $scope.deleteCategory = function(id){
+        $rootScope.deleteCategoryId = id;
+        $location.path('/admin/categories/delete');
     };
 
     $scope.logoutUser = function(){
