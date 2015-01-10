@@ -37,7 +37,8 @@ adsApp.controller('AdminEditUserController', ['$scope', '$http', '$location', '$
                     'name': $scope.updateName,
                     'email': $scope.updateEmail,
                     'phoneNumber': $scope.updatePhone,
-                    'townId': $scope.updateTown
+                    'townId': $scope.updateTown,
+                    'isAdmin': $scope.isAdmin
                 }
             };
 

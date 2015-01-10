@@ -67,8 +67,8 @@
       <file leaf-file-name="AdminUsersController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminUsersController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="799">
-              <caret line="36" column="27" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="175" max-vertical-offset="782">
+              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -77,8 +77,8 @@
       <file leaf-file-name="AdminEditUser.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/app/views/admin/AdminEditUser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769" vertical-offset="595" max-vertical-offset="1972">
-              <caret line="56" column="82" selection-start-line="56" selection-start-column="82" selection-end-line="56" selection-end-column="82" />
+            <state vertical-scroll-proportion="-13.076923" vertical-offset="595" max-vertical-offset="1972">
+              <caret line="55" column="89" selection-start-line="55" selection-start-column="82" selection-end-line="55" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -97,8 +97,8 @@
       <file leaf-file-name="AdminEditUserController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminEditUserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2520593" vertical-offset="663" max-vertical-offset="1581">
-              <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.6721582" vertical-offset="255" max-vertical-offset="1598">
+              <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -149,8 +149,8 @@
         <option value="$PROJECT_DIR$/Client/app/views/admin/AdminHome.html" />
         <option value="$PROJECT_DIR$/Client/app/index.html" />
         <option value="$PROJECT_DIR$/Client/app/views/admin/AdminUsers.html" />
-        <option value="$PROJECT_DIR$/Client/app/js/controllers/admin/AdminUsersController.js" />
         <option value="$PROJECT_DIR$/Client/app/js/app.js" />
+        <option value="$PROJECT_DIR$/Client/app/js/controllers/admin/AdminUsersController.js" />
         <option value="$PROJECT_DIR$/Client/app/views/admin/AdminEditUser.html" />
         <option value="$PROJECT_DIR$/Client/app/js/controllers/admin/AdminEditUserController.js" />
       </list>
@@ -530,7 +530,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -904,6 +904,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/app/views/admin/AdminEditAd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1632">
+          <caret line="9" column="60" selection-start-line="6" selection-start-column="16" selection-end-line="9" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminHomeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="2941">
+          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/app/views/admin/AdminUsers.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.846154" vertical-offset="184" max-vertical-offset="799">
@@ -920,42 +936,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/app/views/admin/AdminEditAd.html">
+    <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminUsersController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="1632">
-          <caret line="9" column="60" selection-start-line="6" selection-start-column="16" selection-end-line="9" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="175" max-vertical-offset="782">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/app/views/admin/AdminEditUser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769" vertical-offset="595" max-vertical-offset="1972">
-          <caret line="56" column="82" selection-start-line="56" selection-start-column="82" selection-end-line="56" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminUsersController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="799">
-          <caret line="36" column="27" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminHomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2232" max-vertical-offset="2941">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="595" max-vertical-offset="1972">
+          <caret line="55" column="89" selection-start-line="55" selection-start-column="82" selection-end-line="55" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/app/js/controllers/admin/AdminEditUserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2520593" vertical-offset="663" max-vertical-offset="1581">
-          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.6721582" vertical-offset="255" max-vertical-offset="1598">
+          <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
           <folding />
         </state>
       </provider>
