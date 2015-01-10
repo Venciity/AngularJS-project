@@ -11,10 +11,14 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
     }
 
     $scope.pageTitle = "Home";
+    $scope.bigCurrentPage = 1;
+    $scope.maxSize = 8;
 
     $scope.getAllAds = function(){
         $http.get('http://softuni-ads.azurewebsites.net/api/ads')
             .success(function(data) {
+                console.log(data);
+                $scope.bigTotalItems = data['numItems'];
                 $scope.ads = data['ads'];
             })
             .error(function() {
@@ -80,6 +84,31 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
     };
 
     $scope.getAllAds();
+
+    $scope.setPage = function(pageNo){
+        $scope.bigCurrentPage = pageNo;
+
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + $scope.bigCurrentPage,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {
+
+            }
+        }
+
+        $http(request)
+            .success(function(data) {
+                $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
+
+            })
+            .error(function() {
+                error('Cannot get ads');
+            });
+    };
 
     $scope.logoutUser = function(){
         sessionStorage.clear();
