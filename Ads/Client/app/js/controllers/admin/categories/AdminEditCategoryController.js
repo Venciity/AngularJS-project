@@ -26,10 +26,8 @@ adsApp.controller('AdminEditCategoryController', ['$scope', '$http', '$location'
 
         $http(request)
             .success(function(data){
-                console.log(data);
-                success('Successfully edited category');
+                success(data['message']);
                 $location.path('admin/categories/list');
-                //success(data['message']);
             })
             .error(function(data){
                 error('Error edit category');

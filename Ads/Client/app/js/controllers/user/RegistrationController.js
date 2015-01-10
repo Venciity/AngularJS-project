@@ -40,7 +40,7 @@ adsApp.controller('RegistrationController',['$scope', '$http', '$location', func
                   .error(function(data){
                       console.log(data);
                       error('Login Error');
-                  })
+                  });
 
 
               success('Success registration');

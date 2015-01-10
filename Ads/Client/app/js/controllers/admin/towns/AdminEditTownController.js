@@ -26,10 +26,8 @@ adsApp.controller('AdminEditTownController', ['$scope', '$http', '$location', '$
 
         $http(request)
             .success(function(data){
-                console.log(data);
-                success('Successfully edited town');
-                $location.path('admin/categories/list');
-                //success(data['message']);
+                success(data['message']);
+                $location.path('admin/towns/list');
             })
             .error(function(data){
                 error('Error edit town');

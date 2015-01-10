@@ -23,7 +23,6 @@ adsApp.controller('AdminEditAdController', ['$scope', '$http', '$location', '$ro
             $http(request)
                 .success(function(data){
                     $scope.ad = data;
-                    console.log(data);
                     $scope.editTitle = data.title;
                     $scope.editText = data.text;
                     $scope.editCategory = data.categoryId;

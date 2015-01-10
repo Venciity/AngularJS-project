@@ -17,7 +17,6 @@ adsApp.controller('AdminDeleteAdController', ['$scope', '$http', '$location', '$
             $http(request)
                 .success(function(data){
                     $scope.ad = data;
-                    console.log(data);
                 })
                 .error(function(data){
                     console.log(data);
