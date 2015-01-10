@@ -10,6 +10,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
         }
     });
 
+    $scope.bigCurrentPage = 1;
+    $scope.maxSize = 8;
+
     $scope.loadMyAds = function(){
         var request = {
             method: 'GET',
@@ -23,6 +26,7 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
         $http(request)
             .success(function(data){
                 $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
                 for (var ad in data['ads']){
                     var currentAd  = data['ads'][ad];
                     if (currentAd.status === 'WaitingApproval' || currentAd.status === 'Published'){
@@ -65,6 +69,7 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
         $http(request)
             .success(function(data){
                 $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
                 for (var ad in data['ads']){
                     var currentAd  = data['ads'][ad];
                     if (currentAd.status === 'WaitingApproval' || currentAd.status === 'Published'){
@@ -143,6 +148,49 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     $scope.editAd = function(id){
         $rootScope.editAdId = id;
         $location.path('/user/ads/edit');
+    };
+
+    $scope.setPage = function(pageNo){
+        $scope.bigCurrentPage = pageNo;
+
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + $scope.bigCurrentPage,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {
+
+            }
+        }
+
+        $http(request)
+            .success(function(data) {
+                $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
+                for (var ad in data['ads']){
+                    var currentAd  = data['ads'][ad];
+                    if (currentAd.status === 'WaitingApproval' || currentAd.status === 'Published'){
+                        currentAd.firstButtonClass = 'btn btn-warning';
+                        currentAd.firstButtonText = 'Deactivate';
+                        currentAd.secondButtonClass = 'hidden';
+                        currentAd.thirdButtonClass = 'hidden';
+                        currentAd.fourthButtonClass = 'hidden';
+                    }
+                    else if (currentAd.status === 'Inactive'){
+                        currentAd.firstButtonClass = 'hidden';
+                        currentAd.secondButtonClass = 'btn btn-default';
+                        currentAd.secondButtonText = 'Edit';
+                        currentAd.thirdButtonClass = 'btn btn-success';
+                        currentAd.thirdButtonText = 'Publish Again';
+                        currentAd.fourthButtonClass = 'btn btn-danger';
+                        currentAd.fourthButtonText = 'Delete';
+                    }
+                }
+            })
+            .error(function() {
+                error('Cannot get ads');
+            });
     };
 
     $scope.logoutUser = function(){
