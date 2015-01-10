@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('AdminCategoriesController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+adsApp.controller('AdminTownsController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -8,12 +8,12 @@ adsApp.controller('AdminCategoriesController', ['$scope', '$http', '$location', 
     }
 
 
-    $scope.pageTitle = 'Administration - Categories';
+    $scope.pageTitle = 'Administration - Towns';
 
-    $scope.getAllCategories = function(){
+    $scope.getAllTowns = function(){
         var request = {
             method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/admin/categories',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/towns',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.accessToken
             },
@@ -22,10 +22,10 @@ adsApp.controller('AdminCategoriesController', ['$scope', '$http', '$location', 
 
         $http(request)
             .success(function(data){
-                $scope.categories = data['categories'];
+                $scope.towns = data['towns'];
             })
             .error(function(data){
-                error('Error get All users by admin');
+                error('Error get All towns by admin');
                 console.log(data);
             }
         );
