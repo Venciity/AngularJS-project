@@ -33,4 +33,10 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
 
     $scope.getAllUsers();
 
+    $scope.editUser = function(user){
+        $rootScope.editUser = user;
+        console.log(user);
+        $location.path('/admin/users/edit');
+    };
+
 }]);
