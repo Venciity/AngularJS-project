@@ -63,12 +63,12 @@ adsApp.controller('AdminEditUserController', ['$scope', '$http', '$location', '$
         $scope.changeUserPassword = function(){
             var request = {
                 method: 'PUT',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/changepassword',
+                url: 'http://softuni-ads.azurewebsites.net/api/admin/setpassword',
                 headers: {
                     'Authorization': 'Bearer ' + sessionStorage.accessToken
                 },
                 data: {
-                    'oldPassword': $scope.oldPassword,
+                    'username': $scope.editUsername,
                     'newPassword': $scope.newPassword,
                     'confirmPassword': $scope.confirmPassword
                 }
