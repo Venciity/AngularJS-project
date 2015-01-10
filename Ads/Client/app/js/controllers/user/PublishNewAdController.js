@@ -80,6 +80,6 @@ adsApp.controller('PublishNewAdController',['$scope', '$http', '$location', func
     $scope.logoutUser = function(){
         sessionStorage.clear();
         success('Successfully logout');
-        $location.path('/');
+        $location.path('/#');
     };
 }]);

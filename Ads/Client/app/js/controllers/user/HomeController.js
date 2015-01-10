@@ -113,6 +113,6 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
     $scope.logoutUser = function(){
         sessionStorage.clear();
         success('Successfully logout');
-        $location.path('/');
+        $location.path('/#');
     };
 }]);

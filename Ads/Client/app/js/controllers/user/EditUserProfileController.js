@@ -94,13 +94,13 @@ adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
         };
 
         $scope.backToHome = function(){
-            $location.path('/');
+            $location.path('/#');
         };
 
         $scope.logoutUser = function(){
             sessionStorage.clear();
             success('Successfully logout');
-            $location.path('/');
+            $location.path('/#');
         };
     }
 ]);
