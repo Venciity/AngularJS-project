@@ -8,11 +8,15 @@ adsApp.controller('LoginController',['$scope', '$http', '$location', function($s
             password: $scope.loginPassword
         })
             .success(function(data){
-                //console.log(data);
                 success('Success login');
                 sessionStorage.accessToken = data.access_token;
                 sessionStorage.username = data.username;
-                $location.path('/');
+                if (data['isAdmin'] == 'true'){
+                    $location.path('/admin/home');
+                }
+                else {
+                    $location.path('/');
+                }
             })
             .error(function(data){
                 console.log(data);
