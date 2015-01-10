@@ -31,20 +31,20 @@ adsApp.controller('AdminTownsController', ['$scope', '$http', '$location', '$roo
         );
     };
 
-    $scope.getAllCategories();
+    $scope.getAllTowns();
 
-    $scope.editCategory = function(category){
-        $rootScope.editCategory = category;
-        $location.path('/admin/categories/edit');
+    $scope.editTown = function(town){
+        $rootScope.editTown = town;
+        $location.path('/admin/towns/edit');
     };
 
-    $scope.deleteCategory = function(category){
-        $rootScope.deleteCategory = category;
-        $location.path('/admin/categories/delete');
+    $scope.deleteTown = function(town){
+        $rootScope.deleteTown = town;
+        $location.path('/admin/towns/delete');
     };
 
-    $scope.createCategory = function(){
-        $location.path('/admin/categories/create');
+    $scope.createTown = function(){
+        $location.path('/admin/towns/create');
     };
 
     $scope.logoutUser = function(){
