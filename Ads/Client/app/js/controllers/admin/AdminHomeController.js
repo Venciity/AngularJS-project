@@ -168,6 +168,6 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
     $scope.logoutUser = function(){
         sessionStorage.clear();
         success('Successfully logout');
-        $location.path('/#');
+        $location.path('/');
     };
 }]);

@@ -46,6 +46,6 @@ adsApp.controller('AdminEditCategoryController', ['$scope', '$http', '$location'
     $scope.logoutUser = function(){
         sessionStorage.clear();
         success('Successfully logout');
-        $location.path('/#');
+        $location.path('/');
     };
 }]);

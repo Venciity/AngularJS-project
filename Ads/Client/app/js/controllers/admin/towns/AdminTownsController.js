@@ -50,6 +50,6 @@ adsApp.controller('AdminTownsController', ['$scope', '$http', '$location', '$roo
     $scope.logoutUser = function(){
         sessionStorage.clear();
         success('Successfully logout');
-        $location.path('/#');
+        $location.path('/');
     };
 }]);

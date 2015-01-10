@@ -118,7 +118,7 @@ adsApp.controller('AdminEditAdController', ['$scope', '$http', '$location', '$ro
         $scope.logoutUser = function(){
             sessionStorage.clear();
             success('Successfully logout');
-            $location.path('/#');
+            $location.path('/');
         };
     }
 ]);
