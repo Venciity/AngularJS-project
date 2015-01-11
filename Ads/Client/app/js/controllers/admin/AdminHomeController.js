@@ -26,6 +26,7 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
             .success(function(data){
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];
+                $scope.numPages = data['numPages'];
             })
             .error(function(data){
                 error('Error get All ads by admin');
@@ -96,6 +97,30 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
                 }
             );
         }
+    };
+
+    $scope.getAdsByStatus = function(status){
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?status=' + status,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {}
+        };
+
+        $http(request)
+            .success(function(data){
+                $scope.ads = data['ads'];
+                $scope.bigTotalItems = data['numItems'];
+                $scope.status = status;
+            })
+            .error(function(data){
+                console.log(data);
+                error('Error load ads by status');
+            }
+        );
+
     };
 
     $scope.approveAd = function(id){
@@ -173,7 +198,7 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
 
         var request = {
             method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + $scope.bigCurrentPage,
+            url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?StartPage=' + $scope.bigCurrentPage + '&status=' + $scope.status,
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.accessToken
             },
@@ -184,9 +209,10 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
 
         $http(request)
             .success(function(data) {
+                console.log(data);
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];
-
+                $scope.numPages = data['numPages'];
             })
             .error(function() {
                 error('Cannot get ads');
