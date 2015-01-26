@@ -7,12 +7,17 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
         $scope.logout = 'Logout';
     }
 
+    //$('.navigation ul li:nth-child(2)').removeClass('active');
+    $('.navigation ul li:nth-child(1)').addClass('active');
+
     $scope.bigCurrentPage = 1;
     $scope.maxSize = 8;
 
     $scope.pageTitle = 'Administration Home';
 
     $scope.getAllAds = function(){
+        $('.categories ul li:nth-child(1)').addClass('active');
+
         var request = {
             method: 'GET',
             url: 'http://softuni-ads.azurewebsites.net/api/admin/ads',
@@ -38,6 +43,7 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
     $scope.getAllAds();
 
     $scope.getAdsByCategoryId = function(id){
+
         var request = {
             method: 'GET',
             url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?CategoryId=' + id,
@@ -46,6 +52,9 @@ adsApp.controller('AdminHomeController', ['$scope', '$http', '$location', '$root
             },
             data: {}
         };
+
+
+
         $http(request)
             .success(function(data){
                 $scope.categoryId = id;

@@ -7,6 +7,8 @@ adsApp.controller('AdminTownsController', ['$scope', '$http', '$location', '$roo
         $scope.logout = 'Logout';
     }
 
+    $('.navigation ul li:nth-child(4)').addClass('active');
+
     $scope.bigCurrentPage = 1;
     $scope.maxSize = 8;
 

@@ -88,3 +88,7 @@ img {
 .choose {
     padding: 10px;
 }
+
+.mySelected {
+    background-color: darkseagreen !important;
+}

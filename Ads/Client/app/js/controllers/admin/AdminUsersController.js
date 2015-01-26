@@ -7,6 +7,8 @@ adsApp.controller('AdminUsersController', ['$scope', '$http', '$location', '$roo
         $scope.logout = 'Logout';
     }
 
+    $('.navigation ul li:nth-child(2)').addClass('active');
+
     $scope.bigCurrentPage = 1;
     $scope.maxSize = 8;
 
