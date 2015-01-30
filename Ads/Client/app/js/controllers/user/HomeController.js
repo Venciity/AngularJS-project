@@ -1,6 +1,7 @@
 'use strict';
 
-adsApp.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+adsApp.controller('HomeController', ['$scope', '$http', '$location', 'adsData',
+    function($scope, $http, $location, adsData) {
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -14,29 +15,17 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
     $scope.bigCurrentPage = 1;
     $scope.maxSize = 8;
 
-    $scope.getAllAds = function(){
-        $http.get('http://softuni-ads.azurewebsites.net/api/ads')
-            .success(function(data) {
-                console.log(data);
-                $scope.bigTotalItems = data['numItems'];
-                $scope.ads = data['ads'];
-            })
-            .error(function() {
-                error('Error occurred when get ads');
-            }
-        );
-    };
-
-    $http.get('http://softuni-ads.azurewebsites.net/api/categories')
+    var allCategoriesPromise = adsData.getAllCategories();
+    allCategoriesPromise
         .success(function(data){
             $scope.categories = data;
         })
         .error(function(){
             error('Error occurred when get categories');
-        }
-    );
+        });
 
-    $http.get('http://softuni-ads.azurewebsites.net/api/towns')
+    var allTownsPromise = adsData.getAllTowns();
+    allTownsPromise
         .success(function(data){
             $scope.towns = data;
         })
@@ -46,21 +35,23 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
     );
 
     $scope.getAdsByCategoryId = function(id){
-      $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + id)
-          .success(function(data){
-              $scope.categoryId = id;
-              $scope.ads = data['ads'];
-          })
-          .error(function(data){
-              console.log(data);
-              error('Error occurred when get Ads by categoryId!');
-          }
-      );
+        var adsByCategoryIdPromise = adsData.getAdsByCategoryId(id);
+        adsByCategoryIdPromise
+              .success(function(data){
+                  $scope.categoryId = id;
+                  $scope.ads = data['ads'];
+              })
+              .error(function(data){
+                  console.log(data);
+                  error('Error occurred when get Ads by categoryId!');
+              }
+            );
     };
 
     $scope.getAdsByTownId = function(id){
         if($scope.categoryId){
-            $http.get('http://softuni-ads.azurewebsites.net/api/ads?CategoryId=' + $scope.categoryId + '&townId=' + id)
+            var getAdsByCategoryIdAndTownIdPromise = adsData.getAdsByCategoryIdAndTownId($scope.categoryId, id);
+            getAdsByCategoryIdAndTownIdPromise
                 .success(function(data){
                     $scope.ads = data['ads'];
                 })
@@ -71,7 +62,8 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
             );
         }
         else{
-            $http.get('http://softuni-ads.azurewebsites.net/api/ads?townId=' + id)
+            var getAdsByTownIdPromise = adsData.getAdsByTownId(id);
+            getAdsByTownIdPromise
                 .success(function(data){
                     $scope.ads = data['ads'];
                 })
@@ -83,7 +75,16 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
         }
     };
 
-    $scope.getAllAds();
+    var adsAllPromise = adsData.getAllAds();
+    adsAllPromise
+        .success(function(data){
+            $scope.ads = data['ads'];
+            $scope.bigTotalItems = data['numItems'];
+        })
+        .error(function(){
+           error('Error occurred when get all ads');
+        }
+    );
 
     $scope.setPage = function(pageNo){
         $scope.bigCurrentPage = pageNo;
@@ -97,7 +98,7 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
             data: {
 
             }
-        }
+        };
 
         $http(request)
             .success(function(data) {
@@ -107,7 +108,8 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', function($s
             })
             .error(function() {
                 error('Cannot get ads');
-            });
+            }
+        );
     };
 
     $scope.logoutUser = function(){
