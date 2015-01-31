@@ -89,18 +89,9 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', 'adsData',
     $scope.setPage = function(pageNo){
         $scope.bigCurrentPage = pageNo;
 
-        var request = {
-            method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + $scope.bigCurrentPage,
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {
+        var pagePromise = adsData.getPage($scope.bigCurrentPage);
 
-            }
-        };
-
-        $http(request)
+        pagePromise
             .success(function(data) {
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];

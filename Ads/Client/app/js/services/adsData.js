@@ -26,13 +26,29 @@ adsApp.factory('adsData', ['$http', function($http){
         return $http.get('http://softuni-ads.azurewebsites.net/api/ads?townId=' + id);
     };
 
+    function getPage(bigCurrentPage){
+        var request = {
+            method: 'GET',
+            url: 'http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + bigCurrentPage,
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.accessToken
+            },
+            data: {
+
+            }
+        };
+
+        return $http(request);
+    };
+
     return {
         getAllAds: getAllAds,
         getAllCategories: getAllCategories,
         getAllTowns: getAllTowns,
         getAdsByCategoryId: getAdsByCategoryId,
         getAdsByCategoryIdAndTownId: getAdsByCategoryIdAndTownId,
-        getAdsByTownId: getAdsByTownId
+        getAdsByTownId: getAdsByTownId,
+        getPage: getPage
     }
 
 }]);
