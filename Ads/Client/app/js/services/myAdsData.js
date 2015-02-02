@@ -93,7 +93,7 @@ adsApp.factory('myAdsData', ['$http', function($http){
         return $http(request);
     };
 
-    function editAd(editAdId, editTitle, editText, changeImage, image,  editCategory, editTown){
+    function editAd(editAdId, editTitle, editText, changeImage, image, editCategory, editTown){
         var request = {
             method: 'PUT',
             url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + editAdId,

@@ -1,7 +1,7 @@
 'use strict';
 
-adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
-    function($scope, $http, $location){
+adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location', 'townsData', 'myAdsData', 'userData',
+    function($scope, $http, $location, townsData, myAdsData , userData){
         $scope.pageTitle = 'Edit User Profile';
 
         if(sessionStorage.length > 0){
@@ -9,26 +9,20 @@ adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
             $scope.logout = 'Logout';
         }
 
-        $http.get('http://softuni-ads.azurewebsites.net/api/towns')
+        var allTownsPromise = townsData.getAllTowns();
+        allTownsPromise
             .success(function(data){
                 $scope.towns = data;
             })
-            .error(function(){
-                error('Error occurred when get towns');
+            .error(function(data){
+                error(data['message']);
             }
         );
 
         $scope.getUserInfo = function(){
-            var request = {
-                method: 'GET',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/profile',
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.accessToken
-                },
-                data: {}
-            };
+            var getUserInfoPromise = userData.getUserInfo();
 
-            $http(request)
+            getUserInfoPromise
                 .success(function(data){
                     $scope.userInfo = data;
                     $scope.updateName = data.name;
@@ -45,45 +39,24 @@ adsApp.controller('EditUserProfileController', ['$scope', '$http', '$location',
         $scope.getUserInfo();
 
         $scope.editUserProfile = function(){
-            var request = {
-                method: 'PUT',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/profile',
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.accessToken
-                },
-                data: {
-                    'name': $scope.updateName,
-                    'email': $scope.updateEmail,
-                    'phoneNumber': $scope.updatePhone,
-                    'townId': $scope.updateTown
-                }
-            };
+            var editUserProfilePromise =
+                userData.editUserProfile($scope.updateName, $scope.updateEmail, $scope.updatePhone, $scope.updateTown);
 
-            $http(request)
-                .success(function(){
-                    success('Successfully updated profile.');
+            editUserProfilePromise
+                .success(function(data){
+                    success(data['message']);
                 })
-                .error(function(){
-                    error('Error update profile');
+                .error(function(data){
+                    error(data['message']);
                 }
             );
         };
 
         $scope.changeUserPassword = function(){
-            var request = {
-                method: 'PUT',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/changepassword',
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.accessToken
-                },
-                data: {
-                    'oldPassword': $scope.oldPassword,
-                    'newPassword': $scope.newPassword,
-                    'confirmPassword': $scope.confirmPassword
-                }
-            };
+            var changeUserPasswordPromise =
+                userData.changeUserPassword($scope.oldPassword, $scope.newPassword, $scope.confirmPassword);
 
-            $http(request)
+            changeUserPasswordPromise
                 .success(function(){
                     success('Successfully changed password.');
                 })

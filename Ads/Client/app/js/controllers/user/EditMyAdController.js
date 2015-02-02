@@ -1,7 +1,7 @@
 'use strict';
 
-adsApp.controller('EditMyAdController', ['$http', '$scope', '$location', '$rootScope', 'townsData', 'categoriesData', 'myAdsData',
-    function($http, $scope, $location, $rootScope, townsData, categoriesData,  myAdsData){
+adsApp.controller('EditMyAdController', ['$scope', '$location', '$rootScope', 'townsData', 'categoriesData', 'myAdsData',
+    function($scope, $location, $rootScope, townsData, categoriesData,  myAdsData){
         $scope.adData = {};
         $scope.pageTitle = 'Edit Ad';
 
