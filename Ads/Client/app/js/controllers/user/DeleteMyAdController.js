@@ -1,20 +1,13 @@
 'use strict';
 
-adsApp.controller('DeleteMyAdController', ['$scope', '$http', '$location', '$rootScope',
-    function($scope, $http, $location, $rootScope){
+adsApp.controller('DeleteMyAdController', ['$scope', '$location', '$rootScope', 'myAdsData',
+    function($scope, $location, $rootScope, myAdsData){
         $scope.pageTitle = 'Delete Ad';
 
         $scope.getAdToBeDeleted = function(){
-            var request = {
-                method: 'GET',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + $rootScope.deleteAdId,
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.accessToken
-                },
-                data: {}
-            };
+            var getAdToBeDeletedPromise = myAdsData.getAdToBeDeleted($rootScope.deleteAdId);
 
-            $http(request)
+            getAdToBeDeletedPromise
                 .success(function(data){
                     $scope.ad = data;
                 })
@@ -26,16 +19,9 @@ adsApp.controller('DeleteMyAdController', ['$scope', '$http', '$location', '$roo
         $scope.getAdToBeDeleted();
 
         $scope.deleteAd = function(){
-            var request = {
-                method: 'DELETE',
-                url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + $rootScope.deleteAdId,
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.accessToken
-                },
-                data: {}
-            };
+            var deleteAdPromise = myAdsData.deleteAd($rootScope.deleteAdId);
 
-            $http(request)
+            deleteAdPromise
                 .success(function(){
                     success('Successful deleted ad');
                     $location.path('/user/ads');

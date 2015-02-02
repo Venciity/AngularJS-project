@@ -1,7 +1,7 @@
 'use strict';
 
-adsApp.controller('HomeController', ['$scope', '$http', '$location', 'adsData',
-    function($scope, $http, $location, adsData) {
+adsApp.controller('HomeController', ['$scope', '$location', 'townsData', 'categoriesData', 'adsData',
+    function($scope, $location, townsData, categoriesData, adsData) {
 
     if(sessionStorage.length > 0){
         $scope.username = sessionStorage.username;
@@ -15,16 +15,17 @@ adsApp.controller('HomeController', ['$scope', '$http', '$location', 'adsData',
     $scope.bigCurrentPage = 1;
     $scope.maxSize = 8;
 
-    var allCategoriesPromise = adsData.getAllCategories();
+    var allCategoriesPromise = categoriesData.getAllCategories();
     allCategoriesPromise
         .success(function(data){
             $scope.categories = data;
         })
         .error(function(){
             error('Error occurred when get categories');
-        });
+        }
+    );
 
-    var allTownsPromise = adsData.getAllTowns();
+    var allTownsPromise = townsData.getAllTowns();
     allTownsPromise
         .success(function(data){
             $scope.towns = data;

@@ -1,7 +1,7 @@
 'use strict';
 
-adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScope', 'myAdsData',
-    function($scope, $http, $location, $rootScope, myAdsData){
+adsApp.controller('MyAdsController', ['$scope', '$location', '$rootScope', 'myAdsData',
+    function($scope, $location, $rootScope, myAdsData){
     $scope.pageTitle = 'My Ads';
 
     $(document).ready(function(){

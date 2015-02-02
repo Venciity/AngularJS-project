@@ -1,17 +1,8 @@
 'use strict';
 
 adsApp.factory('adsData', ['$http', function($http){
-
     function getAllAds(){
         return $http.get('http://softuni-ads.azurewebsites.net/api/ads');
-    };
-
-    function getAllCategories(){
-        return $http.get('http://softuni-ads.azurewebsites.net/api/categories');
-    };
-
-    function getAllTowns(){
-        return $http.get('http://softuni-ads.azurewebsites.net/api/towns');
     };
 
     function getAdsByCategoryId(id){
@@ -43,8 +34,6 @@ adsApp.factory('adsData', ['$http', function($http){
 
     return {
         getAllAds: getAllAds,
-        getAllCategories: getAllCategories,
-        getAllTowns: getAllTowns,
         getAdsByCategoryId: getAdsByCategoryId,
         getAdsByCategoryIdAndTownId: getAdsByCategoryIdAndTownId,
         getAdsByTownId: getAdsByTownId,
