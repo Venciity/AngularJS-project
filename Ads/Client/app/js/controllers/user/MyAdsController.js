@@ -1,6 +1,7 @@
 'use strict';
 
-adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScope', 'myAdsData',
+    function($scope, $http, $location, $rootScope, myAdsData){
     $scope.pageTitle = 'My Ads';
 
     $(document).ready(function(){
@@ -14,16 +15,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     $scope.maxSize = 8;
 
     $scope.loadMyAds = function(){
-        var request = {
-            method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/user/ads',
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {}
-        }
+        var myAdsPromise = myAdsData.getMyAds();
 
-        $http(request)
+        myAdsPromise
             .success(function(data){
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];
@@ -57,16 +51,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     $scope.loadMyAds();
 
     $scope.loadMyAdsByStatus = function(status){
-        var request = {
-            method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/user/ads?status=' + status,
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {}
-        }
+        var getMyAdsByStatusPromise = myAdsData.getMyAdsByStatus(status);
 
-        $http(request)
+        getMyAdsByStatusPromise
             .success(function(data){
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];
@@ -99,16 +86,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     };
 
     $scope.deactivateAd = function(id){
-        var request = {
-            method: 'PUT',
-            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/' + id,
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {}
-        };
+        var deactivateAdPromise = myAdsData.deactivateAd(id);
 
-        $http(request)
+        deactivateAdPromise
             .success(function(){
                 success('Success deactivated ad.');
                 $scope.loadMyAds();
@@ -120,16 +100,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     };
 
     $scope.publishAgainAd = function(id){
-        var request = {
-            method: 'PUT',
-            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/' + id,
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {}
-        };
+        var publishAgainAdPromise = myAdsData.publishAgainAd(id);
 
-        $http(request)
+        publishAgainAdPromise
             .success(function(){
                 success('Success published again ad.');
                 $scope.loadMyAds();
@@ -153,18 +126,9 @@ adsApp.controller('MyAdsController', ['$scope', '$http', '$location', '$rootScop
     $scope.setPage = function(pageNo){
         $scope.bigCurrentPage = pageNo;
 
-        var request = {
-            method: 'GET',
-            url: 'http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + $scope.bigCurrentPage,
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.accessToken
-            },
-            data: {
+        var getPagePromise = myAdsData.getPage($scope.bigCurrentPage);
 
-            }
-        }
-
-        $http(request)
+        getPagePromise
             .success(function(data) {
                 $scope.ads = data['ads'];
                 $scope.bigTotalItems = data['numItems'];

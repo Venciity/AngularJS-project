@@ -57,9 +57,10 @@ adsApp.controller('PublishNewAdController',['$scope', '$http', '$location', func
                 success('Advertisement submitted for approval. Once approved, it will be published.');
                 $location.path('/user/ads');
             })
-            .error(function(){
-                error('Publish new ad error');
-            })
+            .error(function(data){
+                error(data['message']);
+            }
+        );
     };
 
     $scope.fileSelected = function(fileInputField) {
