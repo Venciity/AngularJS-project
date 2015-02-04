@@ -56,10 +56,23 @@ adsApp.factory('userData', ['$http', function($http){
         });
     };
 
+    function registerUser(username, password, confirmPassword, name, email, phone, town){
+        return $http.post('http://softuni-ads.azurewebsites.net/api/user/register', {
+            username: username,
+            password: password,
+            confirmPassword: confirmPassword,
+            name: name,
+            email: email,
+            phone: phone,
+            town: town
+        })
+    };
+
     return {
         getUserInfo: getUserInfo,
         editUserProfile: editUserProfile,
         changeUserPassword: changeUserPassword,
-        loginUser: loginUser
+        loginUser: loginUser,
+        registerUser: registerUser
     }
 }]);
